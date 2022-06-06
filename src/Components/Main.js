@@ -44,7 +44,7 @@ function Main() {
         backgroundColor: "rgba(75,192,192,0.4)",
         borderColor: "rgba(75,192,192,1)",
         borderCapStyle: "butt",
-        borderWidth: 2,
+        borderWidth: 1,
         borderDash: [],
         borderDashOffset: 0.0,
         borderJoinStyle: "round",
@@ -62,7 +62,7 @@ function Main() {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5001/getall/years")
+    fetch("https://btc-server-app.herokuapp.com/getall/years")
       .then((response) => response.json())
       .then((json) => {
         setYears(json);
@@ -70,7 +70,7 @@ function Main() {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:5001/getall/${selectedYear}/months`)
+    fetch(`https://btc-server-app.herokuapp.com/getall/${selectedYear}/months`)
       .then((response) => response.json())
       .then((json) => {
         setMonths(json);
@@ -78,7 +78,9 @@ function Main() {
   }, [selectedYear]);
 
   useEffect(() => {
-    fetch(`http://localhost:5001/getall/${selectedYear}/${selectedMonth}/days`)
+    fetch(
+      `https://btc-server-app.herokuapp.com/getall/${selectedYear}/${selectedMonth}/days`
+    )
       .then((response) => response.json())
       .then((json) => {
         setDays(json);
@@ -87,7 +89,7 @@ function Main() {
 
   useEffect(() => {
     fetch(
-      `http://localhost:5001/getall/${selectedYear}/${selectedMonth}/${selectedDay}/hours`
+      `https://btc-server-app.herokuapp.com/getall/${selectedYear}/${selectedMonth}/${selectedDay}/hours`
     )
       .then((response) => response.json())
       .then((json) => {
@@ -97,7 +99,7 @@ function Main() {
 
   const selectData = () => {
     fetch(
-      `http://localhost:5001/getby/${selectedYear}${
+      `https://btc-server-app.herokuapp.com/getby/${selectedYear}${
         selectedMonth && "/" + selectedMonth
       }${selectedDay && "/" + selectedDay}${selectedHour && "/" + selectedHour}`
     )
