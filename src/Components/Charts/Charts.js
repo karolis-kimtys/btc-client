@@ -7,7 +7,7 @@ export default function Charts() {
 
   useEffect(() => {
     setLoading(false);
-    fetch("http://localhost:5001/allcharts")
+    fetch("https://btc-server-app.herokuapp.com/allcharts")
       .then((response) => response.json())
       .then((json) => {
         serCharts(json);
@@ -17,7 +17,7 @@ export default function Charts() {
 
   const refetch = () => {
     setLoading(false);
-    fetch("http://localhost:5001/allcharts")
+    fetch("https://btc-server-app.herokuapp.com/allcharts")
       .then((response) => response.json())
       .then((json) => {
         serCharts(json);
